@@ -550,8 +550,7 @@
 /datum/quirk/insanity/post_add() //I don't /think/ we'll need this but for newbies who think "roleplay as insane" = "license to kill" it's probably a good thing to have
 	if(!quirk_holder.mind || quirk_holder.mind.special_role)
 		return
-	to_chat(quirk_holder, "<span class='big bold info'>Please note that your dissociation syndrome does NOT give you the right to attack people or otherwise cause any interference to \
-	the round. You are not an antagonist, and the rules will treat you the same as other crewmembers.</span>")
+	to_chat(quirk_holder, "<span class='big bold info'>Please note that your dementations do not give you the right to attack people randomly. They are a gift from Malkav to be interpreted, not a license to attack random people in the street. </span>")
 
 /datum/quirk/social_anxiety
 	name = "Social Anxiety"

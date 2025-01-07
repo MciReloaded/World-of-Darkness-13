@@ -169,6 +169,10 @@
 	///The x amount a mob's sprite should be offset due to the current position they're in
 	var/body_position_pixel_y_offset = 0
 
+	//Combat Indicator Vars
+	///If combat mode is on or not
+	var/combat_mode = FALSE
+
 	//Shitty VtM vars I'm moving here so they're not strewn around the codebase
 	var/bloodquality = 1
 

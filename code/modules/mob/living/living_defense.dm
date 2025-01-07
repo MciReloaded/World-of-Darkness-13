@@ -118,6 +118,33 @@
 		return FALSE
 	grippedby(user)
 
+/mob/living/proc/set_combat_mode(new_mode, silent = TRUE) //port of the Skyrat/Bubber Combat Indicator
+	if(combat_mode == new_mode)
+		return
+	. = combat_mode
+	combat_mode = new_mode
+	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) //SKYRAT EDIT ADDITION
+	if(hud_used?.action_intent)
+		hud_used.action_intent.update_icon()
+	//SKYRAT EDIT ADDITION BEGIN
+	if(!ishuman(src) && !ckey)
+		if(combat_mode)
+			set_combat_indicator(TRUE)
+		else
+			set_combat_indicator(FALSE)
+	//SKYRAT EDIT ADDITION END
+
+	/*if(silent || !(client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode)))
+		return
+	if(combat_mode)
+		SEND_SOUND(src, sound('sound/misc/ui_togglecombat.ogg', volume = 25)) //Sound from interbay!
+	else
+		SEND_SOUND(src, sound('sound/misc/ui_toggleoffcombat.ogg', volume = 25)) //Slightly modified version of the above
+	*/
+		//Sound files NOT ported so we may have our own, more-appropriate sound
+
+
+
 //proc to upgrade a simple pull into a more aggressive grab.
 /mob/living/proc/grippedby(mob/living/carbon/user, instant = FALSE)
 	if(user.grab_state < GRAB_KILL)
